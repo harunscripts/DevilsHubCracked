@@ -32,6 +32,11 @@ old = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
         --This checks if it's doing an HttpGet on the Site that its mainly logging your ip from, then it returns nil blocking your ip from sending back.
         return nil
     end
+    if method == "HttpGet" and args[1]:find("webhook") then
+        --This checks to see if a request is trying to make you send a webhook, and then blocks it.
+        return nil
+    end
+    
     
     local ReturnNothing = {'KADAIPBLACKLISTGARXA', 'DEVIL-Black-Listed-Players', 'Niggas-Was-Here'}
     for _,v in pairs(ReturnNothing) do
